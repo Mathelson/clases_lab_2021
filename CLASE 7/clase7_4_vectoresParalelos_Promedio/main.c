@@ -5,32 +5,42 @@
 #define DECENDENTE 0
 int cargarVectoresEnteros(int vec[], int tam);
 int cargarVectoresFlotantes(float vec[], int tam);
-void mostrarVectorEnteros(int vec[], int tam);
+int mostrarVectorEnteros(int vec[], int tam);
 float calcularPromedio(int num1, int nume2);
-void mostrarPromedio(int n1[],int n2[], float prom[], int tam);
+int mostrarPromedio(int n1[],int n2[], float prom[], int tam);
 int ordenaPromedio(float vec[], int tam, int criterio);
-void ordenarAlumnos(int n1[],int n2[], float prom[], int tam);
+int ordenarAlumnos(int n1[],int n2[], float prom[], int tam);
 int main()
 {
-   int notaPrimerParcial[TAM]={10, 4, 8, 2,3};
-    int notaSegundoParcial[TAM]={10,9,10,4,6};
+    int notaPrimerParcial[TAM]= {10, 4, 8, 2,3};
+    int notaSegundoParcial[TAM]= {10,9,10,4,6};
     float promedio[TAM];
-   // cargarVectoresEnteros(notaPrimerParcial,TAM);
+    // cargarVectoresEnteros(notaPrimerParcial,TAM);
     //cargarVectoresEnteros(notaSegundoParcial,TAM);
 
     for(int i = 0; i <TAM; i++)
     {
         promedio[i]= calcularPromedio(notaPrimerParcial[i],notaSegundoParcial[i]);
     }
-
     printf("\n\n");
-    mostrarPromedio(notaPrimerParcial,notaSegundoParcial,promedio,TAM);
-    ordenarAlumnos(notaPrimerParcial,notaSegundoParcial,promedio,TAM);
-    mostrarPromedio(notaPrimerParcial,notaSegundoParcial,promedio,TAM);
+    if(!mostrarPromedio(notaPrimerParcial,notaSegundoParcial,promedio,TAM))
+    {
+        printf("HUBO UN ERROR");
+    }
+    if(!ordenarAlumnos(notaPrimerParcial,notaSegundoParcial,promedio,TAM))
+    {
+        printf("HUBO UN ERROR");
+    }
+    ;
+    if(!mostrarPromedio(notaPrimerParcial,notaSegundoParcial,promedio,TAM))
+    {
+        printf("HUBO UN ERROR");
+    }
 
 
     return 0;
 }
+/**TERMINADO*/
 int cargarVectoresEnteros(int vec[], int tam)//PARAMETROS FORMALES, SE DEBEN RESPETAR.
 {
     int todoOK=0;
@@ -43,12 +53,14 @@ int cargarVectoresEnteros(int vec[], int tam)//PARAMETROS FORMALES, SE DEBEN RES
             scanf("%d", &vec[i]);//*(vec + i); PUNTERO?
         }
     }
-    else{
+    else
+    {
         todoOK=1;
     }
 
     return todoOK;
 }
+/**TERMINADO*/
 int cargarVectoresFlotantes(float vec[], int tam)//PARAMETROS FORMALES, SE DEBEN RESPETAR.
 {
     int todoOK=0;
@@ -61,39 +73,57 @@ int cargarVectoresFlotantes(float vec[], int tam)//PARAMETROS FORMALES, SE DEBEN
             scanf("%f", &vec[i]);//*(vec + i); PUNTERO?
         }
     }
-    else{
+    else
+    {
         todoOK=1;
     }
 
     return todoOK;
 }
-void mostrarVectorEnteros(int vec[], int tam)//NOMENCLATURA DE PUNTERO int* vec, int tam
+/**TERMINADO*/
+int mostrarVectorEnteros(int vec[], int tam)//NOMENCLATURA DE PUNTERO int* vec, int tam
 {
-
-    for(int i = 0; i <tam; i++)
+    int todoOk = 0;
+    if(vec != NULL && tam >0)
     {
-        printf("%d\n", vec[i]);
+        for(int i = 0; i <tam; i++)
+        {
+            printf("%d\n", vec[i]);
+        }
+        printf("\n\n");
+        todoOk = 1;//RETORNA UN 1 SI ESTA TODO BIEN
     }
-    printf("\n\n");
+    return todoOk;
 }
+/**TERMINADO*/
 float calcularPromedio(int num1, int num2)
 {
+
     return (float)(num1+num2)/2;
+
 }
-void mostrarPromedio(int n1[],int n2[], float prom[], int tam)
+int mostrarPromedio(int n1[],int n2[], float prom[], int tam)
 {
+    int todoOk=0;
+     if(n1 !=NULL && n2 !=NULL && prom !=NULL && tam > 0)
+     {
+        system("cls");
+        printf("*** Listado promedios alimnos ***\n");
+        printf("     NOTA 1Parcial Nota 2Parcial PROMEDIO\n");
 
-   // system("cls");
-    printf("*** Listado promedios alimnos ***\n");
-    printf("     NOTA 1Parcial Nota 2Parcial PROMEDIO\n");
+        for(int i = 0; i< tam ; i++)
+        {
 
-    for(int i = 0; i< tam ; i++)
-    {
+            printf("       %2d         %2d         %.2f\n",n1[i],n2[i],prom[i]);
 
-        printf("       %2d         %2d         %.2f\n",n1[i],n2[i],prom[i]);
-    }
-    printf("\n\n");
+        }
+        printf("\n\n");
+        todoOk=1;
+
+     }
+    return todoOk;
 }
+/**TERMINADO*/
 int ordenaPromedio(float vec[], int tam, int criterio)
 {
     float aux;
@@ -103,11 +133,13 @@ int ordenaPromedio(float vec[], int tam, int criterio)
     {
         for(int i=0; i<tam-1; i++)
         {
-            for(int j = i +1; j<tam; j++){
-                if((vec[i]>vec[j] && criterio)||(vec[i]<vec[j] && !criterio)){
-                aux = vec[i];
-                vec[i] = vec[j];
-                vec[j] = aux;
+            for(int j = i +1; j<tam; j++)
+            {
+                if((vec[i]>vec[j] && criterio)||(vec[i]<vec[j] && !criterio))
+                {
+                    aux = vec[i];
+                    vec[i] = vec[j];
+                    vec[j] = aux;
                 }
             }
         }
@@ -115,15 +147,23 @@ int ordenaPromedio(float vec[], int tam, int criterio)
     }
     return todoOk;
 }
-void ordenarAlumnos(int n1[],int n2[], float prom[], int tam)
+/**TERMINADO*/
+int ordenarAlumnos(int n1[],int n2[], float prom[], int tam)
 {
     int auxInt;
     float auxFloat;
+    int todoOk=0;
 
-    for(int i=0; i< tam -1; i++){
+    if(n1 !=NULL && n2 !=NULL && prom !=NULL && tam > 0)
+    {
+
+
+    for(int i=0; i< tam -1; i++)
+    {
         for(int j = i+1; j <tam; j++)
         {
-            if(prom[i]<prom[j]){
+            if(prom[i]<prom[j])
+            {
 
                 auxFloat=prom[i];
                 prom[i]=prom[j];
@@ -141,5 +181,10 @@ void ordenarAlumnos(int n1[],int n2[], float prom[], int tam)
             }
         }
     }
+
+    todoOk=1;
+     }
+
+     return todoOk;
 
 }
