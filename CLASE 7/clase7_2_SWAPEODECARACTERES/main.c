@@ -9,8 +9,8 @@ int main()
 {
     char vectorCaracteres[TAM]={'a','d','c','e','b'};
 
-    mostrarVectorEnteros(vectorCaracteres,TAM);
-    ordenarCaracteres(vectorCaracteres,TAM,CRECIENTE);
+    //mostrarVectorEnteros(vectorCaracteres,TAM);
+    //ordenarCaracteres(vectorCaracteres,TAM,CRECIENTE);
     mostrarVectorEnteros(vectorCaracteres,TAM);
     ordenarCaracteres(vectorCaracteres,TAM,DECRECIENTE);
     mostrarVectorEnteros(vectorCaracteres,TAM);
