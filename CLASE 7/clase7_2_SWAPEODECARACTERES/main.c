@@ -12,8 +12,8 @@ int main()
     mostrarVectorEnteros(vectorCaracteres,TAM);
     ordenarCaracteres(vectorCaracteres,TAM,CRECIENTE);
     mostrarVectorEnteros(vectorCaracteres,TAM);
-      ordenarCaracteres(vectorCaracteres,TAM,DECRECIENTE);
-          mostrarVectorEnteros(vectorCaracteres,TAM);
+    ordenarCaracteres(vectorCaracteres,TAM,DECRECIENTE);
+    mostrarVectorEnteros(vectorCaracteres,TAM);
 
 
     return 0;
@@ -28,7 +28,7 @@ int ordenarCaracteres(char vec[], int tam, int criterio)
         for(int i=0; i<tam-1; i++)
         {
             for(int j = i +1; j<tam; j++){
-                if((vec[i]>vec[j] && criterio)||(vec[i]>vec[j] && !criterio)){
+                if((vec[i]>vec[j] && criterio)||(vec[i]<vec[j] && !criterio)){
                 aux = vec[i];
                 vec[i] = vec[j];
                 vec[j] = aux;
@@ -45,7 +45,7 @@ int mostrarVectorEnteros(char vec[], int tam)//NOMENCLATURA DE PUNTERO int* vec,
     {
     for(int i = 0; i <tam; i++)
     {
-        printf("%c", vec[i]);
+        printf("%c\n", vec[i]);
     }
     printf("\n\n");
    todoOk = 1;//RETORNA UN 1 SI ESTA TODO BIEN
