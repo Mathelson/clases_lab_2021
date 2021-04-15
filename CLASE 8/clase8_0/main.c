@@ -12,8 +12,8 @@
 int buscarCaracter(char vec[], int tam, char caracterBuscar);
 int main()
 {
-    char letras[TAM]={'a','r','t','u','f'};
-    printf("%d",buscarCaracter(letras,TAM,'r' ) );
+    char letras[TAM]={'a','r','t','t','f'};
+    printf("%d",buscarCaracter(letras,TAM,'t' ) );
 
 
 
