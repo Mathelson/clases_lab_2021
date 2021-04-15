@@ -10,20 +10,29 @@
  *
  */
 int buscarCaracter(char vec[], int tam, char caracterBuscar);
+/** \brief
+ *
+ * \param vec[] char
+ * \param tam int tamanio del array
+ * \param caracterBuscar char caracter a reemplazar
+ * \param reemplazo char caracter por el cual reemplazo
+ * \return int cantidad de veces que se encuantra la letra en el recorrido
+ *
+ */
 int buscarReemplzar(char vec[], int tam, char caracterBuscar, char reemplazo);
 int main()
 {
-    char letras[TAM]={'a','r','t','u','f'};
+    char letras[TAM]={'a','r','t','u','f'};//r x a t x a
     for(int i =0; i<TAM; i++)
     {
         printf("%c",letras[i]);
     }
     printf("\n\n");
-    printf("%d",buscarCaracter(letras,TAM,'r' ) );
-    buscarReemplzar(letras,TAM,'u','j')
+    printf("\n%d\n",buscarCaracter(letras,TAM,'r' ) );
+    buscarReemplzar(letras,TAM,'a','j');//cambio la u x la a
       for(int i =0; i<TAM; i++)
     {
-        printf("%c",vec[i]);
+        printf("%c\n",letras[i]);
     }
 
 
@@ -55,7 +64,9 @@ int buscarReemplzar(char vec[], int tam, char caracterBuscar, char reemplazo)
         {
             vec[i]=reemplazo;
             contador++;
-            break;//MEJORA EL RENDIMIENTO EVITAMOS SEGUIR ITERANDO
+            /**PRUEBO*/
+           // printf("vec[i] : %d caracterBuscar: %d reemplazo: %d contador: %d\n",vec[i],caracterBuscar,reemplazo,contador);
+            //break;//MEJORA EL RENDIMIENTO EVITAMOS SEGUIR ITERANDO
         }
     }
 
