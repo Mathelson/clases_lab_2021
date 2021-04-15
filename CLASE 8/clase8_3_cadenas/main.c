@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-
+/**REVISAR APUNTES**/
 int miStrlen(char cadena[]);
 void miStrUpr(char cadena[]);
 
