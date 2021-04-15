@@ -15,6 +15,8 @@ int main()
 
     char nombre[20];
     char auxCad[100];
+    /**BUSCAR FUNCION FGETS*/
+    //char datoAGuardar_Tamanio_Y_LugarEnMemoria;
 
 
 

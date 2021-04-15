@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1618499638 source:c:\users\user\desktop\clase 8\clases_lab_2021\clase 8\clase8_3_2dapartefunciones\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
