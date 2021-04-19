@@ -13,7 +13,7 @@ int main()
     char apellido[SIZE_LASTNAME];
     char nombreYApellido[NOMBRE_COMPLETO];
     char auxCad[SECURE_SIZE];
-     //pedir al usuario el nombre
+    //pedir al usuario el nombre
     //pedir al usuario el apellido
     //en nombre completo baus, christian
 
@@ -24,21 +24,21 @@ int main()
     while(strlen(auxCad) >= SIZE_NAME)
     {
         printf("Nombre demasiado largo.Reingrese nombre");
-         fflush(stdin);
-    //gets(nombre);//VALIDAAR LONGITUD
-    gets(auxCad);
+        fflush(stdin);
+        //gets(nombre);//VALIDAAR LONGITUD
+        gets(auxCad);
     }
     strcpy(nombre,auxCad);
 
     printf("Ingrese apellido:");
     fflush(stdin);
     gets(auxCad);
-        while(strlen(auxCad) >= SIZE_LASTNAME)
+    while(strlen(auxCad) >= SIZE_LASTNAME)
     {
         printf("Nombre demasiado largo.Reingrese apellido");
-         fflush(stdin);
-    //gets(nombre);//VALIDAAR LONGITUD
-    gets(auxCad);
+        fflush(stdin);
+        //gets(nombre);//VALIDAAR LONGITUD
+        gets(auxCad);
     }
     strcpy(apellido,auxCad);
 
@@ -51,7 +51,7 @@ int main()
     nombreYApellido[0] = toupper(nombreYApellido[0]);
     //despues del espacio voy a tener una inicial
 
-    for(int i=0;i <nombreYApellido[i] != '\0'; i++)//sea distinto  de '\0'
+    for(int i=0; i <nombreYApellido[i] != '\0'; i++) //sea distinto  de '\0'
     {
         if(nombreYApellido[i] == ' ')//encuantra un espacio en blanco
         {

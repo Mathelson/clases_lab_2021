@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1618860451 source:c:\users\pc2\desktop\19-4\clases_lab_2021\clase 9\gargar-mostrar-ordenar-nombres_clase9\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

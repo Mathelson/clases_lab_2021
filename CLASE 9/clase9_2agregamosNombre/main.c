@@ -4,7 +4,8 @@
 #define ACENDENTE 1
 #define DECENDENTE 0
 
-/**MERGE=FUCION CON LO QUE HICIMOS EN mcargarNombresEnMatriz, legajo  Nombre %s
+/**
+    MERGE=FUCION CON LO QUE HICIMOS EN mcargarNombresEnMatriz, legajo  Nombre %s
     ordenar alumnos, recibir, los nomnres, ordena por promedio ,  criterio int asc BOOLEANO 1 ascendente, 0 desdendente
     criterio vale 0 lo ordenamos por legajo 1 por nombre 2 sexo 3 promedio.
 */
@@ -17,7 +18,8 @@ int ordenaPromedio(float vec[], int tam, int criterio);
 int ordenarAlumnos(int legajo[], char sexo[], int n1[],int n2[], float prom[], int tam);
 int main()
 {
-    char nombres[TAM][20];
+    //char nombres[TAM][20];//fila columna //fila = tam en legajos
+    //char auxCad [100];
     int notaPrimerParcial[TAM]= {10, 4, 8, 2,7,10, 4, 8, 2,7};
     int notaSegundoParcial[TAM]= {10,9,10,4,6,10,9,10,4,6};
     char sexos[TAM]={'f','f','m','f','m','f','f','m','f','m'};
@@ -29,6 +31,20 @@ int main()
 
     //for(int i=0;i<TAM;i++)
     //{
+    /** PEDIR NOMBRE
+        printf("Ingrese un nombre ");
+                 fflush(stdin);
+                // gets(nombres[i]);
+                gets(auxCad)
+                while(strlen(auxCad)>= COLUMNAS)
+                {
+                    printf("Nombre largo");
+                    fflush(stdin);
+                // gets(nombres[i]);
+                gets(auxCad)
+                }
+                strcpy(nombres[i],auxCad);
+*/
       //  printf("Ingrese legajo\n");
         //scanf("%d",&legajos[i]);
        // printf("Ingrese sexo\n");
@@ -39,6 +55,21 @@ int main()
         //scanf("%d",&notaSegundoParcial[i]);
 
     //}
+        /** for(int i=0; i<FILAS; i++)
+     {
+         printf("Ingrese un nombre ");
+         fflush(stdin);
+        // gets(nombres[i]);
+        gets(auxCad)
+        while(strlen(auxCad)>= COLUMNAS)
+        {
+            printf("Nombre largo");
+            fflush(stdin);
+        // gets(nombres[i]);
+        gets(auxCad)
+        }
+        strcpy(nombres[i],auxCad);
+     }*/
 
 
     for(int i = 0; i <TAM; i++)
@@ -173,6 +204,8 @@ int ordenaPromedio(float vec[], int tam, int criterio)
 /**TERMINADO*/
 int ordenarAlumnos(int legajo[], char sexo[], int n1[],int n2[], float prom[], int tam)
 {
+    // int criterio 0 ordena por legajo 1 por nombre 2 sexo 3 promedio
+    //asc 1 ascendente 0 descendente
     int auxInt;
     char auxChar;
     float auxFloat;
