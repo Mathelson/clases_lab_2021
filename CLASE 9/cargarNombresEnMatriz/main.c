@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 #define FILAS 5
 #define COLUMNAS 20
 
@@ -50,4 +52,4 @@ int main()
     printf("\n\n");
     return 0;
 }
-void mostrarNombres(char names[])
+//void mostrarNombres(char names[])
