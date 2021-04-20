@@ -272,7 +272,7 @@ int ordenarAlumnos_criterio_ascendente_( char names[][20], int legajo[], char se
                 /**CRITERIO DE ORDENAMIENTO compara si esta despues en el diccionario si esta despues el que esta en i(despues) es menor que el que esta en j(antes)*/
                 //strcmp > de la A a la Z porque me devuelve un positivo
                // if(strcmp(names[i],names[j])>0)//if(prom[i]<prom[j])//MEJOR PROMEDIO A PEOR PROMEDIO
-                if(sexo[i]<sexo[j])//el sexo del i es mayor al j swapeo
+                if(sexo[i]<sexo[j] || (sexo[i]==sexo[j]&& strcmp (names[i],names[j])>0))//if(prom[i]<prom[j]))//el sexo del i es mayor al j swapeo
                 {
 
 
@@ -302,31 +302,7 @@ int ordenarAlumnos_criterio_ascendente_( char names[][20], int legajo[], char se
 
                 }//si el sexo es igual en j comparo dos hombres o dos mujeres,
                 //estan el mismo grupo, si sos del mismo sexo y el legajo es mayor que el del legajo delmismo grupo
-                else if(legajo[i]>legajo[j]&&sexo[i]==sexo[j]){
-                    auxFloat=prom[i];
-                    prom[i]=prom[j];
-                    prom[j]=auxFloat;
 
-                    auxInt=n1[i];
-                    n1[i]=n1[j];
-                    n1[j]=auxInt;
-
-                    auxInt=n2[i];
-                    n2[i]=n2[j];
-                    n2[j]=auxInt;
-
-                    auxInt=legajo[i];
-                    legajo[i]=legajo[j];
-                    legajo[j]=auxInt;
-
-                    auxChar=sexo[i];
-                    sexo[i]=sexo[j];
-                    sexo[j]=auxChar;
-
-                    strcpy(auxCad,names[i]);
-                    strcpy(names[i], names[j]);
-                    strcpy(names[j],auxCad);
-                }
             }
         }
 
