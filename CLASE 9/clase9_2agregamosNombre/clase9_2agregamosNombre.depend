@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1618880017 source:c:\users\user\desktop\claase 10\clases_lab_2021\clase 9\clase9_2agregamosnombre\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
