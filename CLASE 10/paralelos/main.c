@@ -4,6 +4,7 @@
 #define TAM 10
 #define ACENDENTE 1
 #define DECENDENTE 0
+#define LENGTH_NAME 20
 
 /**
     MERGE=FUCION CON LO QUE HICIMOS EN mcargarNombresEnMatriz, legajo  Nombre %s
@@ -38,7 +39,7 @@ int main()
         fflush(stdin);
         // gets(nombres[i]);
         gets(auxCad);
-        while(strlen(auxCad)>= 20)
+        while(strlen(auxCad)>= LENGTH_NAME)
         {
             printf("Nombre largo");
             fflush(stdin);
@@ -160,12 +161,12 @@ int mostrarPromedio( char names[][20],int legajo[], char sexo[],int n1[],int n2[
     {
         system("cls");
         printf("*** Listado promedios alimnos ***\n");
-        printf("     LEGAJO  SEXO  NOTA 1Parcial Nota 2Parcial PROMEDIO\n");
+        printf("     LEGAJO  NOMBRES SEXO  NOTA 1Parcial Nota 2Parcial PROMEDIO\n");
 
         for(int i = 0; i< tam ; i++)
         {
 
-            printf("  %s    %2d      %2c        %2d         %2d         %.2f\n",names[i],legajo[i], sexo[i],n1[i],n2[i],prom[i]);
+            printf("   %d    %10s      %c        %2d         %2d         %.2f\n",legajo[i],names[i],sexo[i],n1[i],n2[i],prom[i]);//10 ES HACIA LA DERECHA
 
         }
         printf("\n\n");
@@ -268,8 +269,12 @@ int ordenarAlumnos_criterio_ascendente_( char names[][20], int legajo[], char se
         {
             for(int j = i+1; j <tam; j++)
             {
-                if(prom[i]<prom[j])
+                /**CRITERIO DE ORDENAMIENTO compara si esta despues en el diccionario si esta despues el que esta en i(despues) es menor que el que esta en j(antes)*/
+                //strcmp > de la A a la Z porque me devuelve un positivo
+               // if(strcmp(names[i],names[j])>0)//if(prom[i]<prom[j])//MEJOR PROMEDIO A PEOR PROMEDIO
+                if(sexo[i]<sexo[j])//el sexo del i es mayor al j swapeo
                 {
+
 
                     auxFloat=prom[i];
                     prom[i]=prom[j];
@@ -295,7 +300,32 @@ int ordenarAlumnos_criterio_ascendente_( char names[][20], int legajo[], char se
                     strcpy(names[i], names[j]);
                     strcpy(names[j],auxCad);
 
+                }//si el sexo es igual en j comparo dos hombres o dos mujeres,
+                //estan el mismo grupo, si sos del mismo sexo y el legajo es mayor que el del legajo delmismo grupo
+                else if(legajo[i]>legajo[j]&&sexo[i]==sexo[j]){
+                    auxFloat=prom[i];
+                    prom[i]=prom[j];
+                    prom[j]=auxFloat;
 
+                    auxInt=n1[i];
+                    n1[i]=n1[j];
+                    n1[j]=auxInt;
+
+                    auxInt=n2[i];
+                    n2[i]=n2[j];
+                    n2[j]=auxInt;
+
+                    auxInt=legajo[i];
+                    legajo[i]=legajo[j];
+                    legajo[j]=auxInt;
+
+                    auxChar=sexo[i];
+                    sexo[i]=sexo[j];
+                    sexo[j]=auxChar;
+
+                    strcpy(auxCad,names[i]);
+                    strcpy(names[i], names[j]);
+                    strcpy(names[j],auxCad);
                 }
             }
         }
