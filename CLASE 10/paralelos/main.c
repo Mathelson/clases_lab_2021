@@ -19,6 +19,7 @@ int mostrarPromedio( char names[][20],int legajo[], char sexo[],int n1[],int n2[
 int ordenaPromedio(float vec[], int tam, int criterio);
 int ordenarAlumnos(int legajo[], char sexo[], int n1[],int n2[], float prom[], int tam);
 int ordenarAlumnos_criterio_ascendente_( char names[][20], int legajo[], char sexo[], int n1[],int n2[], float prom[], int tam, int criterio, int asc);
+void mostrarAlumno(char nombre[],int legajo, char sexo,int nota1,int nota2, float promedio);//VARIABLES ESCALARES
 int main()
 {
     char nombres[TAM][20]={{"Gi"},{"Matheo"},{"Isabel"},{"Anahi"},{"Lo"},{"Gi"},{"Matheo"},{"Isabel"},{"Anahi"},{"Lo"}};//fila columna //fila = tam en legajos
@@ -162,11 +163,13 @@ int mostrarPromedio( char names[][20],int legajo[], char sexo[],int n1[],int n2[
         system("cls");
         printf("*** Listado promedios alimnos ***\n");
         printf("     LEGAJO  NOMBRES SEXO  NOTA 1Parcial Nota 2Parcial PROMEDIO\n");
+     //    printf("   %d    %10s      %c        %2d         %2d         %.2f\n",legajo[i],names[i],sexo[i],n1[i],n2[i],prom[i]);//10 ES HACIA LA DERECHA
+
 
         for(int i = 0; i< tam ; i++)
         {
-
-            printf("   %d    %10s      %c        %2d         %2d         %.2f\n",legajo[i],names[i],sexo[i],n1[i],n2[i],prom[i]);//10 ES HACIA LA DERECHA
+            mostrarAlumno(names[i],legajo[i],sexo[i],n1[i],n2[i],prom[i]);//paso UN ESCALAR!!! REVISAR MOSTRAR
+           // printf("   %d    %10s      %c        %2d         %2d         %.2f\n",legajo[i],names[i],sexo[i],n1[i],n2[i],prom[i]);//10 ES HACIA LA DERECHA
 
         }
         printf("\n\n");
@@ -312,3 +315,8 @@ int ordenarAlumnos_criterio_ascendente_( char names[][20], int legajo[], char se
     return todoOk;
 
 }
+void mostrarAlumno(char nombre[],int legajo, char sexo,int nota1,int nota2, float promedio)
+{
+    printf("   %d    %10s      %c        %2d         %2d         %.2f\n",legajo,nombre,sexo,nota1,nota2,promedio);//10 ES HACIA LA DERECHA
+}
+
