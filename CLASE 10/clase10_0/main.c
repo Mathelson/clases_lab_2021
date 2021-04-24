@@ -12,10 +12,11 @@ Cuando el usuario ya no quiere ingresar informacion mostrar lo que se recaudo en
 que muestren los totales por columna y por fila.
 Indicar en el espacio sobrante(ultimo cuadradito) la recaudacion to
 */
-#define FILAS 3
+#define FILAS 4
 //LAS COLUMNAS SON OBLIGATORIAS
-#define COLUMNAS 5
+#define COLUMNAS 13
 void totalizar(int mat[][13], int filas);
+void mostrarMatriz(int m[][13],int filas);
 int main()
 {
     //char nombres[5][20];//fila//Columna
@@ -24,34 +25,10 @@ int main()
     //  int matriz[][]={8,9,3,2,1,4,7,10,15,21,1,2,6,7,11};
     //int matriz[FILAS][COLUMNAS]= {8,9,3,2,1,4,7,10,15,21,1,2,6,7,11};
     //int matriz[][COLUMNAS]= {8,9,3,2,1,4,7,10,15,21,1,2,6,7,11};
-    int matriz[FILAS][COLUMNAS];
+    int matriz[FILAS][COLUMNAS]= {0};
 
-   /**columna*///TERMINAR
-   /**cargo por fila**/
-    for(int f=0; f < FILAS; f++)
-    {
-        for(int c=0; c<COLUMNAS; c++)
-        {
-
-            printf("Ingrese un numero",matriz[f][c]);//00,01,02,03,04
-            scanf("%d",&matriz[f][c]);
-        }
-        printf("\n");//estetico
-    }
-
-    /***MUESTRA**/
-
-    for(int f=0; f < FILAS; f++)
-    {
-        for(int c=0; c<COLUMNAS; c++)
-        {
-
-            printf("%d",matriz[f][c]);//00,01,02,03,04
-        }
-        printf("\n");//estetico
-    }
-    //printf("%c\n",nombres[0][0]);
-    return 0;
+mostrarMatriz(matriz,FILAS);
+return 0;
 }
 void totalizar(int mat[][13], int filas)
 {
@@ -67,5 +44,24 @@ void totalizar(int mat[][13], int filas)
             mat[3][j]+=mat[i][j];//en el ultimo
         }
     }
+
+}
+void mostrarMatriz(int m[][13],int filas)
+{
+
+    printf("  ***Recaudaciones***\n");
+    printf("       Internos\n");
+    printf("        1 2 3 4 5 6 7 8 9 10 11 12");
+    for(int f=0; f < filas; f++)
+    {
+        printf("Linea %d\n", f+1);
+        for(int c=0; c < 13; c++)
+        {
+            printf("%4d",m[f][c]);
+        }
+        printf("\n\n");
+    }
+
+
 
 }
