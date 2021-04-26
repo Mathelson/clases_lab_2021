@@ -6,7 +6,7 @@
 #define DECENDENTE 0
 #define LENGTH_NAME 20
 
-/**
+/** ordenamiento funcionando
     MERGE=FUCION CON LO QUE HICIMOS EN mcargarNombresEnMatriz, legajo  Nombre %s
     ordenar alumnos, recibir, los nomnres, ordena por promedio ,  criterio int asc BOOLEANO 1 ascendente, 0 desdendente
     criterio vale 0 lo ordenamos por legajo 1 por nombre 2 sexo 3 promedio.
