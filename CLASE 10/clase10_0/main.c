@@ -2,7 +2,7 @@
 #include <stdlib.h>
 /**
 PROBLEMA COLECTIVOS
-
+https://drive.google.com/drive/folders/1VqPSib8h3qCr2NJIpF4pIVvsdo4noBZL
 linea 1, llinea 2, linea 3
 12 internos en cada linea
 Matriz de 3 filas(lineas) y 12 columnas(internos)
