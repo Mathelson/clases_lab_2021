@@ -14,7 +14,7 @@ Indicar en el espacio sobrante(ultimo cuadradito) la recaudacion to
 */
 #define FILAS 4
 //LAS COLUMNAS SON OBLIGATORIAS
-#define COLUMNAS 13
+#define COLUMNAS 12
 void totalizar(int mat[][13], int filas);
 void mostrarMatriz(int m[][13],int filas);
 int main()
@@ -48,20 +48,24 @@ void totalizar(int mat[][13], int filas)
 }
 void mostrarMatriz(int m[][13],int filas)
 {
-
     printf("  ***Recaudaciones***\n");
     printf("       Internos\n");
-    printf("        1 2 3 4 5 6 7 8 9 10 11 12");
+    printf("           1   2   3   4   5   6   7   8   9   10  11  12 total interno\n");
     for(int f=0; f < filas; f++)
     {
-        printf("Linea %d\n", f+1);
+        if(f==3)
+        {
+              printf("Total int");
+        }
+        else
+        {
+            printf("Linea %d  ", f+1);
+        }
         for(int c=0; c < 13; c++)
         {
             printf("%4d",m[f][c]);
         }
         printf("\n\n");
     }
-
-
 
 }
