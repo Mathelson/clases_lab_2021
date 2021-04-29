@@ -10,6 +10,7 @@ void ordenarEmpleados(eEmpleado lista[], int tam);
 void ordenarEmpleadosnombreascendente(eEmpleado lista[], int tam);//de A A Z
 void ordenaPorSexoDesYLegAs(eEmpleado lista[],int tam);
 void inicializarEmpleados(eEmpleado list[], int tam);
+int menu();
 int main()
 {
     //eEmpleado nomina[TAM];
@@ -38,10 +39,18 @@ int main()
     //  }
     return 0;
 }
+/** \brief BAJA LOGICA
+ *
+ * \param lista[] eEmpleado
+ * \param tam int
+ * \return void
+ *
+ */
 void mostrarEmpleados(eEmpleado lista[],int tam)
 {
     int flag=1;
     printf("\n\n****MOSTRAR EMPPLEADOS***\n\n");
+    printf(" Legajo Nombre Sexo Edad");
     //LIMPIAR PANTALLA
     for(int i = 0; i<tam ; i++)
     {
@@ -57,11 +66,11 @@ void mostrarEmpleados(eEmpleado lista[],int tam)
     {
         printf("No hay empleados en la lista");
     }
-    printf("/n/n");
+    printf("\n\n");
 }
 void mostrarEmpleado(eEmpleado unEmpleado)
 {
-    printf("\n%d %10s %c %d &.2f   %02d/%02d/%02d\n",
+    printf("\n%d %10s %c %d %.2f   %02d/%02d/%02d\n",
            unEmpleado.legajo,
            unEmpleado.nombre,
            unEmpleado.sexo,
@@ -144,4 +153,25 @@ void inicializarEmpleados(eEmpleado list[], int tam)
         list[i].isEmpty=1;
     }
     printf("/n/n");
+}
+/** \brief MENU DE OPCIONES
+ *
+ * \return RETORNA LA OPCION ELEGIDA
+ *
+ */
+int menu()
+{
+    int opcion;
+    system("cls");
+    printf(" Gestion de Empleados\n");
+    printf("1- Alta de Empleado\n");
+    printf("2- Modifica Empleado\n");
+    printf("3- Baja de Empleado\n");
+    printf("4- Listar  Empleados\n");
+    printf("5- Ordenar Empleados\n");
+    printf("6- Informes\n");
+    printf("7- Salir\n");
+    printf("Ingrese opcion\n");
+    scanf("%d", &opcion);
+    return opcion;
 }

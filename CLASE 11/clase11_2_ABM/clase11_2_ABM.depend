@@ -6,3 +6,16 @@
 
 1619267526 c:\users\user\desktop\clase 11\clases_lab_2021\clase 11\clase11_2_abm\empleados.h
 
+1619677685 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 11\clase11_2_abm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleados.h"
+
+1619665439 c:\users\user\desktop\29-04\clases_lab_2021\clase 11\clase11_2_abm\empleados.h
+
+1619665439 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 11\clase11_2_abm\empleados.c
+	<stdio.h>
+	<stdlib.h>
+	"empleados.h"
+
