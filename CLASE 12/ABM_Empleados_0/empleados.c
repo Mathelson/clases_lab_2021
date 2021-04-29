@@ -148,3 +148,75 @@ int menu()
     scanf("%d", &opcion);
     return opcion;
 }
+int altaEmpleado(eEmpleado lista[], int tam, int* punteroId)
+{
+    int retorno = 0;//FALSE
+    int indice;
+    eEmpleado nuevoEmpleadoAux;
+    if(lista != NULL && tam > 0 && punteroId != NULL)
+    {
+        system("cls");
+        printf("    Alta Empleado\n\n");
+        printf("Legajo: %d\n", *punteroId);
+
+        indice = buscarLibre(lista, tam);
+        if(indice == -1)
+        {
+            printf("no hay lugar en el sistema\n");
+        }
+        else
+        {
+            nuevoEmpleadoAux.legajo = *punteroId;
+
+            printf("Ingrese nombre: ");
+            fflush(stdin);
+            gets(nuevoEmpleadoAux.nombre);
+
+            printf("Ingrese edad: ");
+            scanf("%d",&nuevoEmpleadoAux.edad);
+
+            printf("Ingrese sexo: ");
+            fflush(stdin);
+            scanf("%c",&nuevoEmpleadoAux.sexo);
+
+            printf("Sueldo: ");
+            fflush(stdin);
+            scanf("%f",&nuevoEmpleadoAux.sueldo);
+
+            printf("Ingrese fecha de ingreso dd/mm/aaa: INGRESE LAS BARRAS ");
+            scanf("%d/%d/%d",&nuevoEmpleadoAux.fechaIngreso.dia,
+                  &nuevoEmpleadoAux.fechaIngreso.mes,
+                  &nuevoEmpleadoAux.fechaIngreso.anio);
+
+            //BANDERA LA PASO A 0
+            nuevoEmpleadoAux.isEmpty = 0;
+            //IF(FLAGNOMBRE && FLAGEDAD)
+
+            lista[indice] = nuevoEmpleadoAux;
+
+            //ACTUALIZAMOS EL PROXIMO ID
+            (*punteroId)++;//*punteroId = (*punteroId) + 1;
+
+            retorno = 1;
+        }
+
+    }
+
+    return retorno;
+}
+int buscarLibre(eEmpleado lista[],int tam)
+{
+    int indice = -1;
+    if(lista != NULL && tam > 0)
+    {
+        for(int i=0; i < tam; i++)
+        {
+            if( lista[i].isEmpty)//isEmpty==1
+            {
+                indice = i;
+                break;
+            }
+        }
+    }
+    return indice;
+}
