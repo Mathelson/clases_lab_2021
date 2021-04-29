@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1619679999 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 12\abm_empleados_0\empleados.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleados.h"
+
+1619679999 c:\users\user\desktop\29-04\clases_lab_2021\clase 12\abm_empleados_0\empleados.h
+
+1619680102 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 12\abm_empleados_0\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleados.h"
+
