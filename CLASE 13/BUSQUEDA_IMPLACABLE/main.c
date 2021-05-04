@@ -1,0 +1,214 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <ctype.h>
+#define TAM 5
+int utn_getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos);
+int myGets(char* cadena, int longitud);
+int esSoloLetras(char str[]);
+//int getStringLetras(char mensaje[],char input[]);
+/** \brief Retorna el numero Ingresado (tipoFlotante) o de lo contrario muestra un mensaje de Error.
+ *
+ * \param mensaje[] char El mensaje a ser mostrado.
+ * \return float retorna el numero solicitado ya validado;
+ *
+ */
+float getFloat(char mensaje[]);
+
+/** \brief Valida que lo que haya ingresado el usuario sea un numero
+ *
+ * \param [] char numero toma el numero como string para luego recorrerlo
+ * \return int Retorna un 1 si lo ingresado es un numero y un 0 si no lo es
+ *
+ */
+int validar_numeroFlotante(char numero []);
+int main()
+{
+   char letras[10];
+
+    printf("\nIngrese Nombre: ");
+    fflush(stdin);
+    gets(letras);
+    _tolower(letras);
+
+    if(esSoloLetras(letras))
+    {
+        printf("\nEl nombre es %s",letras);
+    }
+    else
+    {
+        printf("\nHubo un error al ingresar el nombre");
+    }
+
+    return 0;
+}
+ int esNumerica(char* cadena);
+ int getInt(int* pResultado);
+
+
+/**
+ * \brief 	Lee de stdin hasta que encuentra un '\n' o hasta que haya copiado en cadena
+ * 			un máximo de 'longitud - 1' caracteres.
+ * \param pResultado Puntero al espacio de memoria donde se copiara la cadena obtenida
+ * \param longitud Define el tamaño de cadena
+ * \return Retorna 0 (EXITO) si se obtiene una cadena y -1 (ERROR) si no
+ *
+ */
+int myGets(char* cadena, int longitud)
+{
+	if(cadena != NULL && longitud >0 && fgets(cadena,longitud,stdin)==cadena)
+	{
+		fflush(stdin); // fpurge o __fpurge
+		if(cadena[strlen(cadena)-1] == '\n')
+		{
+			cadena[strlen(cadena)-1] = '\0';
+		}
+		return 0;
+	}
+	return -1;
+}
+
+/**
+ * \brief Verifica si la cadena ingresada es numerica
+ * \param pResultado Puntero al espacio de memoria donde se dejara el resultado de la funcion
+ * \return Retorna 0 (EXITO) si se obtiene un numero entero y -1 (ERROR) si no
+ *
+ */
+ int getInt(int* pResultado)
+{
+    int retorno=-1;
+    char buffer[64];
+
+    if(pResultado != NULL)
+    {
+    	if(myGets(buffer,sizeof(buffer))==0 && esNumerica(buffer))
+    	{
+			*pResultado = atoi(buffer);
+			retorno = 0;
+		}
+    }
+    return retorno;
+}
+
+/**
+ * \brief Verifica si la cadena ingresada es numerica
+ * \param cadena Cadena de caracteres a ser analizada
+ * \return Retorna 1 (vardadero) si la cadena es numerica y 0 (falso) si no lo es
+ *
+ */
+ int esNumerica(char* cadena)
+{
+	int i=0;
+	int retorno = 1;
+	if(cadena != NULL && strlen(cadena) > 0)
+	{
+		for(i=0 ; cadena[i] != '\0'; i++)
+		{
+			if(i==0 && (cadena[i] == '-' || cadena[i] == '+'))
+			{
+				continue;
+			}
+			if(cadena[i] < '0' || cadena[i] > '9' )
+			{
+				retorno = 0;
+				break;
+			}
+		}
+	}
+	return retorno;
+}
+
+/**
+ * \brief Solicita un numero al usuario, luego de verificarlo devuelve el resultado
+ * \param pResultado Puntero al espacio de memoria donde se dejara el resultado de la funcion
+ * \param mensaje Es el mensaje a ser mostrado
+ * \param mensajeError Es el mensaje de Error a ser mostrado
+ * \param minimo Es el numero maximo a ser aceptado
+ * \param maximo Es el minimo minimo a ser aceptado
+ * \return Retorna 0 si se obtuvo el numero y -1 si no
+ *
+ */
+int utn_getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos)
+{
+	int bufferInt;
+	int retorno = -1;
+	while(reintentos>=0)
+	{
+		reintentos--;
+		printf("%s",mensaje);
+		if(getInt(&bufferInt) == 0)
+		{
+			if(bufferInt >= minimo && bufferInt <= maximo)
+			{
+				*pResultado = bufferInt;
+				retorno = 0;
+				break;
+			}
+		}
+		printf("%s",mensajeError);
+	}
+	return retorno;
+}
+
+
+/**
+ * \brief Verifica si el valor recibido contiene solo letras
+ * \param str Array con la cadena a ser analizada
+ * \return 1 si contiene solo ' ' y letras y 0 si no lo es
+ *
+ */
+int esSoloLetras(char str[])
+{
+   int i=0;
+   while(str[i] != '\0')
+   {
+       if((str[i] != ' ') && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z'))
+           return 0;
+       i++;
+   }
+   return 1;
+}
+
+/**
+ * \brief Solicita un texto al usuario y lo devuelve
+ * \param mensaje Es el mensaje a ser mostrado
+ * \param input Array donde se cargará el texto ingresado
+ * \return 1 si el texto contiene solo letras
+ */
+/**int getStringLetras(char mensaje[],char input[])
+{
+    char aux[256];
+    getString(mensaje,aux);
+    if(esSoloLetras(aux))
+    {
+        strcpy(input,aux);
+        return 1;
+    }
+    return 0;
+}*/
+float getFloat(char mensaje[])
+{
+    char numero[5];
+    printf("%s\n",mensaje);
+    scanf("%s",numero);
+    while(validar_numeroFlotante(numero) == 0)
+    {
+        printf("Ingrese numeros validos:");
+        scanf("%s",numero);
+    }
+    return atof(numero);
+}
+int validar_numeroFlotante(char numero [])
+{
+    int i;
+    int auxReturn=1;
+    for(i=0; i <strlen(numero); i++)
+    {
+        if(!(isdigit(numero[i])))
+        {
+            auxReturn=0;
+        }
+    }
+    return auxReturn;
+}

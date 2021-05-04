@@ -1,0 +1,40 @@
+# depslib dependency file v1.0
+1619970530 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 13\modelo_de_parcial_12\contratacion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Contratacion.h"
+	"utn.h"
+
+1619970581 c:\users\user\desktop\29-04\clases_lab_2021\clase 13\modelo_de_parcial_12\contratacion.h
+
+1619970530 c:\users\user\desktop\29-04\clases_lab_2021\clase 13\modelo_de_parcial_12\utn.h
+
+1619970530 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 13\modelo_de_parcial_12\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Pantalla.h"
+	"Contratacion.h"
+	"utn.h"
+	"Informes.h"
+
+1619970530 c:\users\user\desktop\29-04\clases_lab_2021\clase 13\modelo_de_parcial_12\pantalla.h
+
+1619970530 c:\users\user\desktop\29-04\clases_lab_2021\clase 13\modelo_de_parcial_12\informes.h
+
+1619970530 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 13\modelo_de_parcial_12\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Pantalla.h"
+	"Contratacion.h"
+	"utn.h"
+	"Informes.h"
+
+1619970530 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 13\modelo_de_parcial_12\pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Pantalla.h"
+	"utn.h"
+

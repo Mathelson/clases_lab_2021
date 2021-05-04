@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1619987275 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 13\busqueda_implacable\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

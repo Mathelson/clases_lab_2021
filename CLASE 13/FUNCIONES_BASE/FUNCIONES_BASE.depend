@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1619926401 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 13\funciones_base\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<math.h>
+	<string.h>
+

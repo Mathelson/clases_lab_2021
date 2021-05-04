@@ -2,8 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "empleado.h"
+#include "datawarehouse.h"
 #define TAM 5
 #define TAMSEC 5
+
+int cargarDescripcionSecto(int id, eSector sectores, int tam, char descripcion[]);//descripcion[]
 int main()
 {
         eSector sectores[TAMSEC] =
@@ -14,8 +17,11 @@ int main()
         {503,"Legales"},
         {504,"Ventas"}
     };
+
     char seguir='s';
     int nextId=20000;
+    inicializarEmpleados(nomina,TAM);
+    hardcodearEmpleados(nomina, TAM,5,&nextId);
 
     eEmpleado nomina[TAM];
     /** {
@@ -30,9 +36,6 @@ int main()
      };*/
 
 
-
-
-    //inicializarEmpleados(nomina,TAM);
     do
     {
         switch(menu())
@@ -73,7 +76,7 @@ int main()
             }
             break;
         case 4:
-            mostrarEmpleados(nomina,TAM);
+            mostrarEmpleados(nomina,TAM, sectores,TAMSEC);
             break;
         case 5:
             ordenaPorSexoDesYLegAs(nomina,TAM);
@@ -91,4 +94,19 @@ int main()
     }
     while(seguir=='s');
     return 0;
+}
+int cargarDescripcionSecto(int id, eSector sectores, int tam, char descripcion[])
+{
+    int retorno=0;// si no se encontro el sector
+
+    if(id >= 0 && sectores !=NULL && tam >0 )&& descripcion !=NULL{
+        for(int i =0; i<tam ; i++){
+            if(sectores[i].id==id){
+                strcpy(descripcion,sectores[i].descripcion);
+                retorno=1;
+                break;
+            }
+        }
+    }
+    return retorno;
 }

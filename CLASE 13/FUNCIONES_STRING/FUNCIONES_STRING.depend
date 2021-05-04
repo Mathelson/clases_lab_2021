@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1619974642 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 13\funciones_string\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+

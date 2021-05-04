@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1620022440 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 13\clase13_profe\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleado.h"
+
+1620020556 c:\users\user\desktop\29-04\clases_lab_2021\clase 13\clase13_profe\empleado.h
+
+1620017122 c:\users\user\desktop\29-04\clases_lab_2021\clase 13\clase13_profe\datawarehouse.h
+
+1620020556 source:c:\users\user\desktop\29-04\clases_lab_2021\clase 13\clase13_profe\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"empleado.h"
+	"datawarehouse.h"
+

@@ -4,8 +4,6 @@ typedef struct{
 int id;
 char descripcion[20];
 }eSector;
-
-
 typedef struct{
     int dia;
     int mes;
@@ -25,15 +23,16 @@ typedef struct{
 
 
 
-
-/** \brief Muestra un array de Empleados
+/** \brief Muestra array de empleados y descripcion del sector
  *
  * \param lista[] eEmpleado recibe por paramtro la estructura
- * \param tam int Tamanio
+ * \param tam int el tamanio del array de empleado
+ * \param sectores[] eSector recibe por paramtro la estructura
+ * \param tamS int el tamanio del array de sectores
  * \return void
  *
  */
-void mostrarEmpleados(eEmpleado lista[],int tam);
+void mostrarEmpleados(eEmpleado lista[],int tam, eSector sectores[], int tamS);
 
 /** \brief Muestra un Empleado
  *
@@ -50,7 +49,7 @@ void mostrarEmpleado(eEmpleado unEmpleado, eSector sectores[], int tam);
  * \return void
  *
  */
-void mostrarEmpleados(eEmpleado lista[],int tam, eSector sectores, int tamS);
+void ordenarEmpleados(eEmpleado lista[], int tam);
 
 /** \brief Ordena Empleados de Manera Ascendente  de la A a la Z
  *
@@ -136,7 +135,7 @@ void mostrarSector(eSector unSector);
  * \return int Retorna un 1 cuando se pudo dar de baja el empleado
  *
  */
-int bajaEmpleado(eEmpleado list[], int tam);
+int bajaEmpleado(eEmpleado list[], int tam, eSector sectores[], int tamS);
 
 /** \brief Busca un empleado, si isEmpty es igual 0 y elgajo es igual al legajo retorna el indice
  *
@@ -165,9 +164,32 @@ int menuEmpleado();
  *
  */
 int modificarEmpleado(eEmpleado list[], int tam, eSector sectores[], int tamSec);
+/** \brief
+ *
+ * \param lista[] eEmpleado
+ * \param tam int
+ * \param cant int
+ * \param int*pLegajo
+ * \return int
+ *
+ */
+int hardcodearEmpleados(eEmpleado lista[],int tam, int cant, int*pLegajo);
 
-
-int hardcodearEmpleados(eEmpleado list[],int tam,int cant, int* pLegajo);
-
+/** \brief Busca por id el identificador dentro de sectores y lo carga
+ *
+ * \param id int el id que vamos a buscar
+ * \param sectores eSector El array donde tenemos que realizar la busqueda del sector
+ * \param tam int Tamanio
+ * \param descripcion[] char donde vamos a cargar la descripcion que tenga el id de busqueda
+ * \return int devuelve un 1 si pudo cargar la descripcion y un 0 si no
+ *
+ */
+int cargarDescripcionSector(int id, eSector sectores[], int tam, char descripcion[]);
+/** \brief Muestra el menu de informes
+ *
+ * \return int
+ *
+ */
+int opcionesMenuInformes();
 
 #endif // EMPLEADO_H_INCLUDED

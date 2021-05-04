@@ -1,17 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "empleado.h"
 #include "datawarehouse.h"
 
-/** \brief Muestra un array de Empleados
+
+
+
+
+
+/** \brief Muestra array de empleados y descripcion del sector
  *
  * \param lista[] eEmpleado recibe por paramtro la estructura
- * \param tam int Tamanio
+ * \param tam int el tamanio del array de empleado
+ * \param sectores[] eSector recibe por paramtro la estructura
+ * \param tamS int el tamanio del array de sectores
  * \return void
  *
  */
-void mostrarEmpleados(eEmpleado lista[],int tam, eSector sectores, int tamS)
+void mostrarEmpleados(eEmpleado lista[],int tam, eSector sectores[], int tamS)
 {
     int flag=1;
     printf("\n\n****MOSTRAR EMPPLEADOS***\n\n");
@@ -22,7 +30,7 @@ void mostrarEmpleados(eEmpleado lista[],int tam, eSector sectores, int tamS)
 
         if(!lista[i].isEmpty) //si no esta vacia la muestro si es diferente de1
         {
-            mostrarEmpleado(lista[i],sectores,tamS);
+            mostrarEmpleado(lista[i], sectores,tamS);
             flag =0;
         }
 
@@ -35,28 +43,34 @@ void mostrarEmpleados(eEmpleado lista[],int tam, eSector sectores, int tamS)
 }
 /** \brief Muestra un Empleado
  *
- * \param unEmpleado eEmpleado recibe por parametro la estructura a ser mostrada
+ * \param unEmpleado eEmpleado rebibe por parametro la estructura a ser mostrada
  * \return void
  *
  */
 void mostrarEmpleado(eEmpleado unEmpleado, eSector sectores[], int tam)
 {
     char descripcion[20];
-    cargarDescripcionSector(unEmpleado.idSector,eSector sectores, tam, descripcion);
-
-    printf("\n%d %10s %c %d %.2f   %02d/%02d/%02d    %d\n",
-           unEmpleado.legajo,
-           unEmpleado.nombre,
-           unEmpleado.sexo,
-           unEmpleado.edad,
-           unEmpleado.sueldo,
-           unEmpleado.fechaIngreso.dia,
-           unEmpleado.fechaIngreso.mes,
-           unEmpleado.fechaIngreso.anio,
-           unEmpleado.idSector
-           );
+    if(cargarDescripcionSector(unEmpleado.idSector, sectores,tam, descripcion))
+    {
 
 
+            printf("\n%d %10s %c %d %.2f   %02d/%02d/%02d    %s\n",
+                   unEmpleado.legajo,
+                   unEmpleado.nombre,
+                   unEmpleado.sexo,
+                   unEmpleado.edad,
+                   unEmpleado.sueldo,
+                   unEmpleado.fechaIngreso.dia,
+                   unEmpleado.fechaIngreso.mes,
+                   unEmpleado.fechaIngreso.anio,
+                   /**si lo quiero con numero descomento y elimino la descripcion**/
+                   //unEmpleado.idSector
+                   descripcion
+                   );
+    }
+    else{
+        printf("\nHubo un problema con la descripcion del sector\n");
+    }
 }
 /** \brief Ordena los empleados por edad
  *
@@ -315,7 +329,7 @@ void mostrarSector(eSector unSector){
  * \return int Retorna un 1 cuando se pudo dar de baja el empleado
  *
  */
-int bajaEmpleado(eEmpleado list[], int tam)
+int bajaEmpleado(eEmpleado list[], int tam, eSector sectores[], int tamS)
 {
     int retorno = 0;
     int indice;
@@ -324,7 +338,8 @@ int bajaEmpleado(eEmpleado list[], int tam)
 
     system("cls");
     printf("       Baja Empleado\n");
-    mostrarEmpleados(list,tam);
+    //MODIFICO REVISAR EL EDITAR
+    mostrarEmpleados(list,tam,sectores,tamS);
     printf("Ingrese legajo: ");
     scanf("%d", &legajo);
 
@@ -336,7 +351,7 @@ int bajaEmpleado(eEmpleado list[], int tam)
     }
     else
     {
-        mostrarEmpleado(list[indice]);
+        mostrarEmpleado(list[indice], sectores, tamS);
 
         printf("Confirma baja?: ");
         fflush(stdin);
@@ -423,7 +438,7 @@ int modificarEmpleado(eEmpleado list[], int tam, eSector sectores[], int tamSec)
 
     system("cls");
     printf("       Modificar Empleado\n");
-    mostrarEmpleados(list,tam);
+    mostrarEmpleados(list,tam, sectores,tamSec);
     printf("Ingrese legajo: ");
     scanf("%d", &legajo);
 
@@ -435,7 +450,7 @@ int modificarEmpleado(eEmpleado list[], int tam, eSector sectores[], int tamSec)
     }
     else
     {
-        mostrarEmpleado(list[indice]);
+        mostrarEmpleado(list[indice],sectores,tamSec);
 
         printf("Confirma EDICION DE ESTE EMPLEADO?: ");
         fflush(stdin);
@@ -505,25 +520,82 @@ int modificarEmpleado(eEmpleado list[], int tam, eSector sectores[], int tamSec)
     return retorno;
 }
 
-
-
-
-int hardcodearEmpleados(eEmpleado list[],int tam,int cant, int* pLegajo)//cantidad de legajos que quiero
+int hardcodearEmpleados(eEmpleado lista[],int tam, int cant, int* pLegajo)
 {
     int total = 0;
-    if(list !=NULL && tam > 0 && cant >=0 && cant <=tam && pLegajo !=NULL){
-        for(int i=0; i<cant; i++){
-            list[i].legajo = *pLegajo;
+    if(lista != NULL && tam > 0 && cant >=0 && cant <= tam && pLegajo != NULL)
+    {
+        for(int i=0; i <cant; i++)
+        {
+            lista[i].legajo = *pLegajo;
             (*pLegajo)++;
-            strcpy(list[i].nombre,nombres[i]);
-            list.sexo[i]=sexos[i];
-            list.sueldo[i] =sueldos[i];
-            list[i].edad = edaddes[i];
-            list[i].idSector = idSectors[i];
-            list[i].isEmpty =0;
-            list[i].fechaIngreso= fechas[i];
+            strcpy(lista[i].nombre,nombres[i]);
+            lista[i].sexo = sexos[i];
+            lista[i].sueldo = sueldos[i];
+            lista[i].edad = edades[i];
+            lista[i].idSector = idSectores[i];
+            lista[i].isEmpty = 0;
+            lista[i].fechaIngreso = fechas[i];
             total++;
         }
     }
+
     return total;
+
+}
+
+int cargarDescripcionSector(int id, eSector sectores[], int tam, char descripcion[])
+{
+    int retorno = 0;
+    if(id >=500 && id <= 504 && sectores != NULL && tam > 0 && descripcion != NULL)
+    {
+        for(int i=0; i< tam; i++)
+        {
+            if(sectores[i].id == id)
+            {
+                strcpy(descripcion, sectores[i].descripcion);
+                retorno = 1;
+                break;
+            }
+
+        }
+    }
+    return retorno;
+}
+/** \brief Muestra el menu de informes
+ *
+ * \return int
+ *
+ */
+
+int opcionesMenuInformes()
+{
+    int respuesta;
+
+    system("cls");
+    printf("\n1- Mostrar Electrodomésticos del anio 2020");
+    printf("\n2- Mostrar Electrodomésticos de una marca seleccionada");
+    printf("\n3- Mostrar todos las reparaciones efectuadas al Electrodoméstico seleccionado");
+    printf("\n4- Listar los Electrodomésticos que no tuvieron reparaciones");
+    printf("\n5- Informar importe total de las reparaciones realizadas a un Electrodoméstico");
+    printf("\n6- Mostrar el servicio más pedido");
+    printf("\n7- Mostrar la recaudación en una fecha en particular");
+    printf("\n8- Mostrar todos los Electrodomésticos que realizaron una garantía y la fecha");
+    printf("\n9- Trabajos realizados a Electrodomésticos del año(modelo) 2018");
+    printf("\n10- Facturación total por los mantenimientos");
+    printf("\n11- Informar la marca de Electrodomésticos que efectuaron más refacciones");
+    printf("\n12- Listar los Electrodomésticos que recibieron reparación en un fecha determinada");
+    printf("\n13- salir al menu principal\n");
+    printf("ingrese numero de menu\n");
+    fflush(stdin);
+    scanf("%d", &respuesta);
+
+    while(respuesta > 14 || respuesta < 1)
+    {
+        printf("ERROR ingrese numero de menu nuevamente");
+        printf("\n\n Por favor ingrese otro numero: ");
+        fflush(stdin);
+        scanf("%d", &respuesta);
+    }
+    return respuesta;
 }
